@@ -18,17 +18,15 @@ Follow this link to check the demo
 The following defination will only detect and execute provided callback **only** when `A`, `+` or `z` is pressed from keyboard.
 
 ```js
-import  React, { useState } from  'react';
 import  useKey  from  'use-key-hook';
 
 function MyComponent  = (props) => {
-	const [keyCode, setKeyCode] =  useState();
 	useKey((pressedKey) => {
 		console.log('Detected Key press', pressedKey);
 	}, {
 		detectKeys: ['A', '+', 122]
 	});
-  );
+};
 ```
 
 ## Arguments in useKey
