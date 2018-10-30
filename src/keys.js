@@ -1,5 +1,5 @@
 const isKeyFromGivenList = (keyCode, allowedKeys = []) => {
-  if (allowedKeys.includes(keyCode) || allowedKeys.length === 0 || allowedKeys === null) {
+  if (allowedKeys === null || allowedKeys.includes(keyCode) || allowedKeys.length === 0) {
     return true;
   }
   return false;
