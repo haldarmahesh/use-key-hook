@@ -1,0 +1,33 @@
+{
+  "name": "use-key-hook",
+  "version": "1.0.0",
+  "author": "",
+  "description": "React hook to handle all the key press.",
+  "main": "src/index.js",
+
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watchAll"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "react": "^16.7.0-alpha.0",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "files": [
+    "src/index.js"
+  ],
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  }
+}
