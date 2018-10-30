@@ -18,7 +18,7 @@ Follow this link to check the demo
 The following defination will only detect and execute provided callback **only** when `A`, `+` or `z` is pressed from keyboard.
 
 ```js
-import  useKey  from  'use-key-hook';
+import useKey from 'use-key-hook';
 
 function MyComponent  = (props) => {
 	useKey((pressedKey) => {
