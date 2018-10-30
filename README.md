@@ -24,14 +24,10 @@ import  useKey  from  'use-key-hook';
 function MyComponent  = (props) => {
 	const [keyCode, setKeyCode] =  useState();
 	useKey((pressedKey) => {
-		setKeyCode(pressedKey);
+		console.log('Detected Key press', pressedKey);
 	}, {
 		detectKeys: ['A', '+', 122]
 	});
-	return (
-	    <div>
-	      <b>We detected the keypress {keyCode}</b>
-	    </div>
   );
 ```
 
