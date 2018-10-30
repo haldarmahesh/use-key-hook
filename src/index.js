@@ -1,7 +1,8 @@
 const { useEffect } = require('react');
 const isKeyFromGivenList = require('./keys');
-const _dependencies = [];
-const useKey = (callback, { keys = [] } ={}, { dependencies = _dependencies } = {}) => {
+
+const useKey = (callback, { keys = [] } = {}, { dependencies = [] } = {}) => {
+  let allowedKeys = keys;
   useEffect(() => {
     if (!window || !window.document || !callback) {
       throw new Error();
@@ -10,12 +11,16 @@ const useKey = (callback, { keys = [] } ={}, { dependencies = _dependencies } = 
       throw new Error(typeof dependencies);
     }
 
-    if(!Array.isArray(keys)) {
-      keys = [];
+    if (!Array.isArray(keys)) {
+      allowedKeys = [];
       console.warn('Keys should be array!');
     }
 
-    const onKeyPress = event => keysUtils.isKeyFromGivenList(event.keyCode, keys) && callback(event);
+    const onKeyPress = event => {
+      if (isKeyFromGivenList.isKeyFromGivenList(event.keyCode, allowedKeys)) {
+        callback(event);
+      }
+    };
     window.document.addEventListener('keydown', onKeyPress);
     return () => {
       window.document.removeEventListener('keydown', onKeyPress);

@@ -1,10 +1,7 @@
 const isKeyFromGivenList = (keyCode, allowedKeys = []) => {
-    if(!allowedKeys) {
-        allowedKeys = [];
-    }
-    if (allowedKeys.includes(keyCode) || allowedKeys.length === 0) {
-      return true;
-    }
-    return false;
+  if (allowedKeys.includes(keyCode) || allowedKeys.length === 0 || allowedKeys === null) {
+    return true;
   }
-  module.exports = isKeyFromGivenList;
+  return false;
+};
+module.exports = isKeyFromGivenList;
