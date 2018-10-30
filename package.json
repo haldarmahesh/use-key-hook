@@ -1,6 +1,6 @@
 {
   "name": "use-key-hook",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "",
   "description": "React hook to handle all the key press.",
   "main": "src/index.js",
@@ -44,7 +44,8 @@
     "regenerator-runtime": "^0.12.1"
   },
   "files": [
-    "src/index.js"
+    "src/index.js",
+    "src/keys.js"
   ],
   "engines": {
     "node": ">=8",
