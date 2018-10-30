@@ -1,22 +1,23 @@
 const { useEffect } = require('react');
-const { onKeyPress } = require('./keys');
+const { onKeyPress, convertToAsciiEquivalent } = require('./keys');
 
-const useKey = (callback, { keys = [] } = {}, { dependencies = [] } = {}) => {
-  let allowedKeys = keys;
+const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) => {
+  let allowedKeys = detectKeys;
+  if (!window || !window.document || !callback) {
+    throw new Error();
+  }
+
+  if (!Array.isArray(dependencies)) {
+    throw new Error(typeof dependencies);
+  }
+
+  if (!Array.isArray(detectKeys)) {
+    allowedKeys = [];
+    console.warn('Keys should be array!');
+  }
+  allowedKeys = convertToAsciiEquivalent(allowedKeys);
   useEffect(() => {
-    if (!window || !window.document || !callback) {
-      throw new Error();
-    }
-    if (!Array.isArray(dependencies)) {
-      throw new Error(typeof dependencies);
-    }
-
-    if (!Array.isArray(keys)) {
-      allowedKeys = [];
-      console.warn('Keys should be array!');
-    }
-
-    window.document.addEventListener('keydown', event => onKeyPress(event.keyCode, callback, allowedKeys));
+    window.document.addEventListener('keydown', event => onKeyPress(event.key.charCodeAt(0), callback, allowedKeys));
     return () => {
       window.document.removeEventListener('keydown', onKeyPress);
     };

@@ -6,7 +6,18 @@ const isKeyFromGivenList = (keyCode, allowedKeys = []) => {
 };
 const onKeyPress = (currentKeyCode, callback, allowedKeys) => {
   if (isKeyFromGivenList(currentKeyCode, allowedKeys)) {
-    callback();
+    callback(currentKeyCode);
   }
 };
-module.exports = { isKeyFromGivenList, onKeyPress };
+
+function convertToAsciiEquivalent(inputArray) {
+  return inputArray.map(item => {
+    let finalVal = item;
+    if (typeof item === 'string') {
+      finalVal = finalVal.charCodeAt(0);
+    }
+    return finalVal;
+  });
+}
+
+module.exports = { isKeyFromGivenList, onKeyPress, convertToAsciiEquivalent };
