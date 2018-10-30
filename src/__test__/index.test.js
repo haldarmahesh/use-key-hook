@@ -5,7 +5,7 @@ jest.mock('react', () => ({
 const { useEffect } = require('react');
 const useKey = require('../');
 
-describe('useKey', () => {
+describe('useKey setup', () => {
   test('throws error when callback is not defined', () => {
     expect((() => useKey())).toThrowError();
   });
@@ -32,3 +32,18 @@ describe('useKey', () => {
     expect(window.document.removeEventListener).toHaveBeenCalledTimes(1);
   });
 });
+describe('keys array', () => {
+  test('should call the useEffect method, when the keys is not given', () => {
+    window.document.addEventListener = jest.fn();
+    window.document.removeEventListener = jest.fn();
+    useKey(() => jest.fn());
+    expect(window.document.addEventListener).toHaveBeenCalledWith('keydown', expect.any(Function));
+    expect(window.document.addEventListener).toHaveBeenCalledTimes(1);
+    expect(window.document.removeEventListener).toHaveBeenCalledWith(
+      'keydown',
+      expect.any(Function)
+    );
+    expect(window.document.removeEventListener).toHaveBeenCalledTimes(1);
+  });
+})
+

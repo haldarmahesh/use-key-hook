@@ -4,10 +4,16 @@
   "author": "",
   "description": "React hook to handle all the key press.",
   "main": "src/index.js",
-
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
+  },
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watchAll"
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll --coverage"
   },
   "license": "ISC",
   "peerDependencies": {
