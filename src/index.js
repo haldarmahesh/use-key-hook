@@ -1,5 +1,5 @@
 const { useEffect } = require('react');
-const { onKeyPress, convertToAsciiEquivalent } = require('./keys');
+const { onKeyPress, convertToAsciiEquivalent } = require('./keys.js');
 
 const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) => {
   let allowedKeys = detectKeys;

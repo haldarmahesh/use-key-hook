@@ -1,6 +1,6 @@
 {
   "name": "use-key-hook",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "",
   "description": "React hook to handle all the key press.",
   "main": "src/index.js",
@@ -53,6 +53,7 @@
   "keywords": [
     "react",
     "hook",
+    "hooks",
     "keyboard",
     "input"
   ]
