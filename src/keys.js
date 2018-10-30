@@ -4,4 +4,9 @@ const isKeyFromGivenList = (keyCode, allowedKeys = []) => {
   }
   return false;
 };
-module.exports = isKeyFromGivenList;
+const onKeyPress = (currentKeyCode, callback, allowedKeys) => {
+  if (isKeyFromGivenList(currentKeyCode, allowedKeys)) {
+    callback();
+  }
+};
+module.exports = { isKeyFromGivenList, onKeyPress };
