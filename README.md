@@ -81,3 +81,10 @@ The above will detect when number `2` is pressed only.
 Pressing 1, it will not be detected as we passed ASCII code numeric 1 and this is not number 1.
 
 Pressing any other key will not be detected.
+
+## Contributing
+
+If you have any new suggestions, new features, bug fixes, etc. please contribute by raising pull request on the [https://github.com/haldarmahesh/use-key-hook](repository).
+
+If you have any issue with the `use-key-hook`, open an issue on [https://github.com/haldarmahesh/use-key-hook](Github).
+
