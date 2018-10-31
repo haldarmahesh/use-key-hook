@@ -1,29 +1,31 @@
 [![Build Status](https://travis-ci.org/haldarmahesh/use-key-hook.svg?branch=master)](https://travis-ci.org/haldarmahesh/use-key-hook)
 [![npm version](https://badge.fury.io/js/use-key-hook.svg)](https://badge.fury.io/js/use-key-hook)
+
 # use-key-hook
 
 This is a React hook that detects all or some keys from keyboard.
+
 If you want to detect few keys and execute function, you can provide a list of ASCII codes or keys in an array.
 
-## Installing
+## Installing 
 
-```
+```bash
 npm install use-key-hook
 ```
 
-```
+```bash
 yarn add use-key-hook
 ```
 
 ## Demo
 
-Follow [this link](http://www.maheshhaldar.com/demo-use-key/) to check the demo
+[Demo](http://www.maheshhaldar.com/demo-use-key/)
 
 ## Usage
 
 The following defination will only detect and execute provided callback **only** when `A`, `+` or `z` is pressed from keyboard.
 
-```js
+```javascript
 import useKey from 'use-key-hook';
 
 function MyComponent  = (props) => {
@@ -57,7 +59,7 @@ The items in arrays can be **ASCII code** of keys or **characters itself**.
 
 #### Example values of detectKeys array
 
-```
+```json
 {
 	detectKeys: ['A', 69, 27]
 }
@@ -65,24 +67,24 @@ The items in arrays can be **ASCII code** of keys or **characters itself**.
 
 The above will detect and execute callback only the following keys
 
-- `A` maps with item 0 `A`
-- `Enter key` maps with ASCII code is 69
-- `Escape key` maps with numeric ASCII code 27.
+- <kbd>A</kbd> maps with item 0 `A`
+- <kbd>Enter</kbd> key maps with ASCII code is 69
+- <kbd>Escape</kbd> key maps with numeric ASCII code 27.
 
 Pressing any other key will not be detected.
 
-```
+```json
 {
 	detectKeys: [1, '2']
 }
 ```
 
-The above will detect when number `2` is pressed only.
-Pressing 1, it will not be detected as we passed ASCII code numeric 1 and this is not number 1.
+The above will detect when number <kbd>2</kbd> is pressed only.
+Pressing <kbd>1</kbd>, it will not be detected as we passed ASCII code numeric `1` and this is not number `1`.
 
-Pressing any other key will not be detected.
+⚠ Pressing any other key will not be detected.
 
-## Contributing
+## Contributing 👦👦
 
 If you have any new suggestions, new features, bug fixes, etc. please contribute by raising pull request on the [repository](https://github.com/haldarmahesh/use-key-hook).
 
