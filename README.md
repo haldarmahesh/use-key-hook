@@ -82,9 +82,9 @@ Pressing any other key will not be detected.
 The above will detect when number <kbd>2</kbd> is pressed only.
 Pressing <kbd>1</kbd>, it will not be detected as we passed ASCII code numeric `1` and this is not number `1`.
 
-⚠ Pressing any other key will not be detected.
+Pressing any other key will not be detected.
 
-## Contributing 👦👦
+## Contributing
 
 If you have any new suggestions, new features, bug fixes, etc. please contribute by raising pull request on the [repository](https://github.com/haldarmahesh/use-key-hook).
 
