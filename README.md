@@ -7,7 +7,7 @@ This is a React hook that detects all or some keys from keyboard.
 
 If you want to detect few keys and execute function, you can provide a list of ASCII codes or keys in an array.
 
-## Installing 
+## Installing
 
 ```bash
 npm install use-key-hook
@@ -29,11 +29,11 @@ The following defination will only detect and execute provided callback **only**
 import useKey from 'use-key-hook';
 
 function MyComponent  = (props) => {
-	useKey((pressedKey) => {
-		console.log('Detected Key press', pressedKey);
-	}, {
-		detectKeys: ['A', '+', 122]
-	});
+  useKey((pressedKey) => {
+    console.log('Detected Key press', pressedKey);
+  }, {
+    detectKeys: ['A', '+', 122]
+  });
 };
 ```
 
@@ -61,7 +61,7 @@ The items in arrays can be **ASCII code** of keys or **characters itself**.
 
 ```json
 {
-	detectKeys: ['A', 69, 27]
+  "detectKeys": ["A", 69, 27]
 }
 ```
 
@@ -75,7 +75,7 @@ Pressing any other key will not be detected.
 
 ```json
 {
-	detectKeys: [1, '2']
+  "detectKeys": [1, 2]
 }
 ```
 
@@ -89,4 +89,3 @@ Pressing <kbd>1</kbd>, it will not be detected as we passed ASCII code numeric `
 If you have any new suggestions, new features, bug fixes, etc. please contribute by raising pull request on the [repository](https://github.com/haldarmahesh/use-key-hook).
 
 If you have any issue with the `use-key-hook`, open an issue on [Github](https://github.com/haldarmahesh/use-key-hook).
-
