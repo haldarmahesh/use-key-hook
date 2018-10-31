@@ -84,7 +84,7 @@ Pressing any other key will not be detected.
 
 ## Contributing
 
-If you have any new suggestions, new features, bug fixes, etc. please contribute by raising pull request on the [https://github.com/haldarmahesh/use-key-hook](repository).
+If you have any new suggestions, new features, bug fixes, etc. please contribute by raising pull request on the [repository](https://github.com/haldarmahesh/use-key-hook).
 
-If you have any issue with the `use-key-hook`, open an issue on [https://github.com/haldarmahesh/use-key-hook](Github).
+If you have any issue with the `use-key-hook`, open an issue on [Github](https://github.com/haldarmahesh/use-key-hook).
 
