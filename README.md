@@ -84,7 +84,7 @@ Pressing <kbd>1</kbd>, it will not be detected as we passed ASCII code numeric `
 
 ⚠ Pressing any other key will not be detected.
 
-## Contributing 👦👦
+## Contributing
 
 If you have any new suggestions, new features, bug fixes, etc. please contribute by raising pull request on the [repository](https://github.com/haldarmahesh/use-key-hook).
 
