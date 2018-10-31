@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/haldarmahesh/use-key-hook.svg?branch=master)](https://travis-ci.org/haldarmahesh/use-key-hook)
+[![npm version](https://badge.fury.io/js/use-key-hook.svg)](https://badge.fury.io/js/use-key-hook)
 # use-key-hook
 
 This is a React hook that detects all or some keys from keyboard.
