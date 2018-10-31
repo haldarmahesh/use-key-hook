@@ -1,3 +1,5 @@
+const codeLowerCaseA = 65;
+const codeUpperCaseZ = 122;
 const isKeyFromGivenList = (keyCode, allowedKeys = []) => {
   if (allowedKeys === null || allowedKeys.includes(keyCode) || allowedKeys.length === 0) {
     return true;
@@ -10,6 +12,14 @@ const onKeyPress = (currentKeyCode, callback, allowedKeys) => {
   }
 };
 
+function getAsciiCode(event) {
+  let keyCode = event.which;
+  if (keyCode >= codeLowerCaseA && keyCode <= codeUpperCaseZ) {
+    keyCode = event.key.charCodeAt(0);
+  }
+  return keyCode;
+}
+
 function convertToAsciiEquivalent(inputArray) {
   return inputArray.map(item => {
     let finalVal = item;
@@ -20,4 +30,9 @@ function convertToAsciiEquivalent(inputArray) {
   });
 }
 
-module.exports = { isKeyFromGivenList, onKeyPress, convertToAsciiEquivalent };
+module.exports = {
+  isKeyFromGivenList,
+  onKeyPress,
+  convertToAsciiEquivalent,
+  getAsciiCode
+};

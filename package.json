@@ -1,6 +1,6 @@
 {
   "name": "use-key-hook",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "",
   "description": "React hook to handle all the key press.",
   "main": "src/index.js",
@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test && npm run format:fix && npm run lint"
+      "pre-commit": "npm run test && npm run lint-fix && npm run lint"
     }
   },
   "scripts": {

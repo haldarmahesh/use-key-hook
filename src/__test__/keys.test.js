@@ -1,4 +1,4 @@
-const { isKeyFromGivenList, onKeyPress, convertToAsciiEquivalent } = require('../keys');
+const { isKeyFromGivenList, onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('../keys');
 
 describe('keys utils', () => {
   test('isKeyFromGivenList returns true when current key belong to allowed list', () => {
@@ -62,5 +62,35 @@ describe('convertToAsciiEquivalent', () => {
 
     expect(convertToAsciiEquivalent(input5)[0]).toEqual(97);
     expect(convertToAsciiEquivalent(input5)[1]).toEqual(65);
+  });
+});
+
+describe('getAsciiCode', () => {
+  test('should return the ascii code', () => {
+    const event1 = {
+      which: 65,
+      key: 'A'
+    };
+    const event2 = {
+      which: 65,
+      key: 'a'
+    };
+    const event3 = {
+      which: 90,
+      key: 'Z'
+    };
+    const event4 = {
+      which: 90,
+      key: 'z'
+    };
+    const event5 = {
+      which: 123,
+      key: '{'
+    };
+    expect(getAsciiCode(event1)).toEqual(65);
+    expect(getAsciiCode(event2)).toEqual(97);
+    expect(getAsciiCode(event3)).toEqual(90);
+    expect(getAsciiCode(event4)).toEqual(122);
+    expect(getAsciiCode(event5)).toEqual(123);
   });
 });

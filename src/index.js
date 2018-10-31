@@ -1,5 +1,5 @@
 const { useEffect } = require('react');
-const { onKeyPress, convertToAsciiEquivalent } = require('./keys.js');
+const { onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('./keys.js');
 
 const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) => {
   let allowedKeys = detectKeys;
@@ -17,7 +17,7 @@ const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) 
   }
   allowedKeys = convertToAsciiEquivalent(allowedKeys);
   useEffect(() => {
-    window.document.addEventListener('keydown', event => onKeyPress(event.key.charCodeAt(0), callback, allowedKeys));
+    window.document.addEventListener('keydown', event => onKeyPress(getAsciiCode(event), callback, allowedKeys));
     return () => {
       window.document.removeEventListener('keydown', onKeyPress);
     };

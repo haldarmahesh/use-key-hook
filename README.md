@@ -9,9 +9,13 @@ If you want to detect few keys and execute function, you can provide a list of A
 npm install use-key-hook
 ```
 
+```
+yarn add use-key-hook
+```
+
 ## Demo
 
-Follow this link to check the demo
+Follow [this link](http://www.maheshhaldar.com/demo-use-key/) to check the demo
 
 ## Usage
 

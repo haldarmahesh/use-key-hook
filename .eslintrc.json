@@ -1,10 +1,10 @@
 {
-    "extends": "airbnb",
-    "parserOptions": {
-        "sourceType": "module",
-        "parser": "babel-eslint"
-      },
-    "rules": {
+  "extends": "airbnb",
+  "parserOptions": {
+    "sourceType": "module",
+    "parser": "babel-eslint"
+  },
+  "rules": {
     "arrow-parens": ["off"],
     "compat/compat": 2,
     "consistent-return": "off",
@@ -19,16 +19,14 @@
     "promise/no-native": 0,
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": "off"
-    
-  },
-  "plugins": [
-    "promise",
-    "compat",
-    "react"
-  ],
-    "env": {
-        "jest": true,
-        "browser": true
+    "react/prefer-stateless-function": "off",
+    "rules": {
+      "curly": ["error", "all"]
     }
+  },
+  "plugins": ["promise", "compat", "react"],
+  "env": {
+    "jest": true,
+    "browser": true
+  }
 }
