@@ -1,4 +1,6 @@
-const { isKeyFromGivenList, onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('../keys');
+const {
+  isKeyFromGivenList, onKeyPress, convertToAsciiEquivalent, getAsciiCode
+} = require('../keys');
 
 describe('keys utils', () => {
   test('isKeyFromGivenList returns true when current key belong to allowed list', () => {
