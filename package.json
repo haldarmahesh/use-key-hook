@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test && npm run lint-fix && npm run lint"
+      "pre-commit": "npm run test && npm run format:fix && npm run lint"
     }
   },
   "scripts": {
