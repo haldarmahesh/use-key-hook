@@ -1,5 +1,8 @@
 const {
-  isKeyFromGivenList, onKeyPress, convertToAsciiEquivalent, getAsciiCode
+  isKeyFromGivenList,
+  onKeyPress,
+  convertToAsciiEquivalent,
+  getAsciiCode,
 } = require('../keys');
 
 describe('keys utils', () => {
@@ -20,7 +23,7 @@ describe('onKeyPress', () => {
   test('should call the cb when currentKey is in allowed', () => {
     const callback = jest.fn();
     const event = {
-      keyCode: 12
+      keyCode: 12,
     };
     onKeyPress(event.keyCode, callback, [12, 34]);
     expect(callback).toHaveBeenCalledTimes(1);
@@ -28,7 +31,7 @@ describe('onKeyPress', () => {
   test('should not call the cb when currentKey is not in allowed', () => {
     const callback = jest.fn();
     const event = {
-      keyCode: 15
+      keyCode: 15,
     };
     onKeyPress(event.keyCode, callback, [12, 34]);
     expect(callback).not.toHaveBeenCalled();
@@ -36,7 +39,7 @@ describe('onKeyPress', () => {
   test('should call the cb when currentKey matches with character', () => {
     const callback = jest.fn();
     const event = {
-      keyCode: 65
+      keyCode: 65,
     };
     onKeyPress(event.keyCode, callback, [65, 34]);
     expect(callback).toHaveBeenCalled();
@@ -71,23 +74,23 @@ describe('getAsciiCode', () => {
   test('should return the ascii code', () => {
     const event1 = {
       which: 65,
-      key: 'A'
+      key: 'A',
     };
     const event2 = {
       which: 65,
-      key: 'a'
+      key: 'a',
     };
     const event3 = {
       which: 90,
-      key: 'Z'
+      key: 'Z',
     };
     const event4 = {
       which: 90,
-      key: 'z'
+      key: 'z',
     };
     const event5 = {
       which: 123,
-      key: '{'
+      key: '{',
     };
     expect(getAsciiCode(event1)).toEqual(65);
     expect(getAsciiCode(event2)).toEqual(97);
