@@ -75,7 +75,7 @@ Pressing any other key will not be detected.
 
 ```json
 {
-  "detectKeys": [1, 2]
+  "detectKeys": [1, "2"]
 }
 ```
 
