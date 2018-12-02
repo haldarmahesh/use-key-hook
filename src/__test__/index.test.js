@@ -1,4 +1,6 @@
 import React from 'react';
+
+// eslint-disable-next-line object-curly-newline
 import { render, flushEffects, cleanup, fireEvent } from 'react-testing-library';
 
 const useKey = require('../');
