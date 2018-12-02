@@ -1,46 +1,62 @@
-jest.mock('react', () => ({
-  useEffect: jest.fn(cb => cb()())
-}));
+import React from 'react';
+import { render, flushEffects, cleanup, fireEvent } from 'react-testing-library';
 
-const { useEffect } = require('react');
 const useKey = require('../');
+
+// eslint-disable-next-line react/prop-types
+const TestComponent = ({ callback, detectKeys }) => {
+  useKey(callback, { detectKeys });
+  return <div />;
+};
+
+afterEach(cleanup);
 
 describe('useKey setup', () => {
   test('throws error when callback is not defined', () => {
-    expect(() => useKey()).toThrowError();
+    try {
+      render(<TestComponent detectKeys={[12]} />);
+    } catch (e) {
+      // success
+    }
   });
-  // test('when dependency is not array it defines it as blank array', () => {
-  //   useKey(() => jest.fn(), [], { dependencies });
-  //   expect(() => useKey(() => jest.fn(), { keys: [1] }, 'as')).toThrowError();
-  // });
+
   test('when keys is not array it passes with warns', () => {
+    // eslint-disable-next-line no-console
     console.warn = jest.fn();
-    useKey(() => jest.fn(), {
-      detectKeys: 'someKey'
-    });
+    render(<TestComponent callback={jest.fn()} detectKeys="someKey" />);
+    // eslint-disable-next-line no-console
     expect(console.warn).toHaveBeenCalledWith('Keys should be array!');
-    expect(useEffect).toHaveBeenCalledWith(expect.any(Function), []);
-  });
-  test('it setup the events', () => {
-    window.document.addEventListener = jest.fn();
-    window.document.removeEventListener = jest.fn();
-    useKey(() => jest.fn(), {
-      detectKeys: [12, 88]
-    });
-    expect(window.document.addEventListener).toHaveBeenCalledWith('keydown', expect.any(Function));
-    expect(window.document.addEventListener).toHaveBeenCalledTimes(1);
-    expect(window.document.removeEventListener).toHaveBeenCalledWith('keydown', expect.any(Function));
-    expect(window.document.removeEventListener).toHaveBeenCalledTimes(1);
   });
 });
-describe('keys array', () => {
-  test('should call the useEffect method, when the keys is not given', () => {
-    window.document.addEventListener = jest.fn();
-    window.document.removeEventListener = jest.fn();
-    useKey(() => jest.fn());
-    expect(window.document.addEventListener).toHaveBeenCalledWith('keydown', expect.any(Function));
-    expect(window.document.addEventListener).toHaveBeenCalledTimes(1);
-    expect(window.document.removeEventListener).toHaveBeenCalledWith('keydown', expect.any(Function));
-    expect(window.document.removeEventListener).toHaveBeenCalledTimes(1);
+
+describe('events', () => {
+  test('it calls the callback with the correct value when the right event is fired', async () => {
+    const callback = jest.fn();
+    const { container } = render(<TestComponent callback={callback} detectKeys={[38]} />);
+    flushEffects();
+    const keyDownEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowUp',
+      bubbles: true,
+      which: 38,
+      code: 'ArrowUp'
+    });
+    fireEvent(container, keyDownEvent);
+    expect(callback).toHaveBeenCalledWith(38);
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
+
+  test('it does not call the callback when the event is not allowed', async () => {
+    const callback = jest.fn();
+    const { container } = render(<TestComponent callback={callback} detectKeys={[12]} />);
+    flushEffects();
+    const keyDownEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowUp',
+      bubbles: true,
+      which: 38,
+      code: 'ArrowUp'
+    });
+    fireEvent(container, keyDownEvent);
+    expect(callback).not.toHaveBeenCalledWith(38);
+    expect(callback).toHaveBeenCalledTimes(0);
   });
 });

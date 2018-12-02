@@ -13,13 +13,20 @@ const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) 
 
   if (!Array.isArray(detectKeys)) {
     allowedKeys = [];
+    // eslint-disable-next-line no-console
     console.warn('Keys should be array!');
   }
   allowedKeys = convertToAsciiEquivalent(allowedKeys);
+
+  const handleKeydown = event => {
+    const asciiCode = getAsciiCode(event);
+    return onKeyPress(asciiCode, callback, allowedKeys);
+  };
+
   useEffect(() => {
-    window.document.addEventListener('keydown', event => onKeyPress(getAsciiCode(event), callback, allowedKeys));
+    window.document.addEventListener('keydown', handleKeydown);
     return () => {
-      window.document.removeEventListener('keydown', onKeyPress);
+      window.document.removeEventListener('keydown', handleKeydown);
     };
   }, dependencies);
 };
