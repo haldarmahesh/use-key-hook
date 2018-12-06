@@ -7,6 +7,13 @@ This is a React hook that detects all or some keys from keyboard.
 
 If you want to detect few keys and execute function, you can provide a list of ASCII codes or keys in an array.
 
+Few examples of use cases:
+
+- Add keyboard shortcuts in your app
+- Close modal on press of escape key
+- If it is react music player, control volume and seek video
+- Implement next or back on slide show
+
 ## Installing
 
 ```bash
