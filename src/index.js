@@ -1,7 +1,14 @@
 const { useEffect } = require('react');
+const invariant = require('invariant');
 const { onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('./keys.js');
 
-const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) => {
+const VALID_KEYEVENTS = ['keydown', 'keyup', 'keypress'];
+
+const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { dependencies = [] } = {}) => {
+  const isKeyeventValid = VALID_KEYEVENTS.indexOf(keyevent) > -1;
+
+  invariant(isKeyeventValid, 'keyevent is not valid: ' + keyevent);
+
   let allowedKeys = detectKeys;
   if (!window || !window.document || !callback) {
     throw new Error();
@@ -24,9 +31,9 @@ const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) 
   };
 
   useEffect(() => {
-    window.document.addEventListener('keydown', handleKeydown);
+    window.document.addEventListener(keyevent, handleKeydown);
     return () => {
-      window.document.removeEventListener('keydown', handleKeydown);
+      window.document.removeEventListener(keyevent, handleKeydown);
     };
   }, dependencies);
 };
