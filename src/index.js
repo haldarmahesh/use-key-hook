@@ -8,21 +8,19 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
   const isKeyeventValid = VALID_KEYEVENTS.indexOf(keyevent) > -1;
 
   invariant(isKeyeventValid, 'keyevent is not valid: ' + keyevent);
+  invariant(callback != null, 'callback needs to be defined');
+  invariant(window != null, 'window needs to be defined');
+  invariant(window.document != null, 'window.document needs to be defined');
+  invariant(Array.isArray(dependencies), 'dependencies need to be an array');
+  invariant(Array.isArray(dependencies), 'dependencies need to be an array');
 
   let allowedKeys = detectKeys;
-  if (!window || !window.document || !callback) {
-    throw new Error();
-  }
-
-  if (!Array.isArray(dependencies)) {
-    throw new Error(typeof dependencies);
-  }
 
   if (!Array.isArray(detectKeys)) {
     allowedKeys = [];
-    // eslint-disable-next-line no-console
     console.warn('Keys should be array!');
   }
+
   allowedKeys = convertToAsciiEquivalent(allowedKeys);
 
   const handleKeydown = event => {
