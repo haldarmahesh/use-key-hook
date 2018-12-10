@@ -18,6 +18,7 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
 
   if (!Array.isArray(detectKeys)) {
     allowedKeys = [];
+    // eslint-disable-next-line no-console
     console.warn('Keys should be array!');
   }
 
