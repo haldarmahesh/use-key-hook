@@ -2,10 +2,10 @@ const { useEffect } = require('react');
 const invariant = require('invariant');
 const { onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('./keys.js');
 
-const VALID_KEYEVENTS = ['keydown', 'keyup', 'keypress'];
+const VALID_KEY_EVENTS = ['keydown', 'keyup', 'keypress'];
 
 const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { dependencies = [] } = {}) => {
-  const isKeyeventValid = VALID_KEYEVENTS.indexOf(keyevent) > -1;
+  const isKeyeventValid = VALID_KEY_EVENTS.indexOf(keyevent) > -1;
 
   invariant(isKeyeventValid, 'keyevent is not valid: ' + keyevent);
   invariant(callback != null, 'callback needs to be defined');
@@ -23,15 +23,15 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
 
   allowedKeys = convertToAsciiEquivalent(allowedKeys);
 
-  const handleKeydown = event => {
+  const handleEvent = event => {
     const asciiCode = getAsciiCode(event);
     return onKeyPress(asciiCode, callback, allowedKeys);
   };
 
   useEffect(() => {
-    window.document.addEventListener(keyevent, handleKeydown);
+    window.document.addEventListener(keyevent, handleEvent);
     return () => {
-      window.document.removeEventListener(keyevent, handleKeydown);
+      window.document.removeEventListener(keyevent, handleEvent);
     };
   }, dependencies);
 };

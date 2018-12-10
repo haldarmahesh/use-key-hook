@@ -19,17 +19,13 @@ describe('useKey setup', () => {
   });
 
   test('when keys is not an array it passes with warns', () => {
-    // eslint-disable-next-line no-console
     console.warn = jest.fn();
     render(<TestComponent callback={jest.fn()} detectKeys="someKey" />);
-    // eslint-disable-next-line no-console
     expect(console.warn).toHaveBeenCalledWith('Keys should be array!');
   });
 
   test('when the passed keyevent is an invalid event, an error is thrown', () => {
-    // eslint-disable-next-line no-console
     console.warn = jest.fn();
-    // eslint-disable-next-line no-console
     expect(() => render(<TestComponent callback={jest.fn()} detectKeys="someKey" keyevent="click" />)).toThrowError();
   });
 });
