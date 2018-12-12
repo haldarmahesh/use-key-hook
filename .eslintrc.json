@@ -6,6 +6,8 @@
   },
   "rules": {
     "arrow-parens": ["off"],
+    "prefer-template": "off",
+    "no-console": "off",
     "compat/compat": 2,
     "consistent-return": "off",
     "comma-dangle": "off",

@@ -1,32 +1,38 @@
 const { useEffect } = require('react');
+const invariant = require('invariant');
 const { onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('./keys.js');
 
-const useKey = (callback, { detectKeys = [] } = {}, { dependencies = [] } = {}) => {
-  let allowedKeys = detectKeys;
-  if (!window || !window.document || !callback) {
-    throw new Error();
-  }
+const VALID_KEY_EVENTS = ['keydown', 'keyup', 'keypress'];
 
-  if (!Array.isArray(dependencies)) {
-    throw new Error(typeof dependencies);
-  }
+const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { dependencies = [] } = {}) => {
+  const isKeyeventValid = VALID_KEY_EVENTS.indexOf(keyevent) > -1;
+
+  invariant(isKeyeventValid, 'keyevent is not valid: ' + keyevent);
+  invariant(callback != null, 'callback needs to be defined');
+  invariant(window != null, 'window needs to be defined');
+  invariant(window.document != null, 'window.document needs to be defined');
+  invariant(Array.isArray(dependencies), 'dependencies need to be an array');
+  invariant(Array.isArray(dependencies), 'dependencies need to be an array');
+
+  let allowedKeys = detectKeys;
 
   if (!Array.isArray(detectKeys)) {
     allowedKeys = [];
     // eslint-disable-next-line no-console
     console.warn('Keys should be array!');
   }
+
   allowedKeys = convertToAsciiEquivalent(allowedKeys);
 
-  const handleKeydown = event => {
+  const handleEvent = event => {
     const asciiCode = getAsciiCode(event);
     return onKeyPress(asciiCode, callback, allowedKeys);
   };
 
   useEffect(() => {
-    window.document.addEventListener('keydown', handleKeydown);
+    window.document.addEventListener(keyevent, handleEvent);
     return () => {
-      window.document.removeEventListener('keydown', handleKeydown);
+      window.document.removeEventListener(keyevent, handleEvent);
     };
   }, dependencies);
 };
