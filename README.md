@@ -66,9 +66,9 @@ The items in arrays can be **ASCII code** of keys or **characters itself**.
 
 #### Example values of detectKeys array
 
-```json
+```js
 {
-  "detectKeys": ["A", 69, 27]
+  detectKeys: ['A', 69, 27];
 }
 ```
 
@@ -80,9 +80,9 @@ The above will detect and execute callback only the following keys
 
 Pressing any other key will not be detected.
 
-```json
+```js
 {
-  "detectKeys": [1, "2"]
+  detectKeys: [1, '2'];
 }
 ```
 
@@ -102,6 +102,15 @@ Pressing any other key will not be detected.
 This parameter is passed in the config object along with `detectKeys`.
 
 There are 3 type of events options [`keydown`, `keyup`, `keypress`].
+
+Example config object:
+
+```js
+{
+  detectKeys: [1, '2'],
+  keyevent: 'keyup'
+}
+```
 
 ## Contributing
 
