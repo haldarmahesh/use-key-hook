@@ -46,13 +46,13 @@ function MyComponent  = (props) => {
 
 ## Arguments in useKey
 
-### callback _(required)_
+### 1) callback _(required)_
 
 > type: function
 >
 > The first argument is callback function which gets executed whenever the keys are pressed.
 
-### detectKeys _(optional)_
+### 2) detectKeys _(optional)_
 
 > type: array
 > array item type: string | number
@@ -90,6 +90,18 @@ The above will detect when number <kbd>2</kbd> is pressed only.
 Pressing <kbd>1</kbd>, it will not be detected as we passed ASCII code numeric `1` and this is not number `1`.
 
 Pressing any other key will not be detected.
+
+### 3) keyevent _(optional)_
+
+> type: string
+>
+> default: `keydown`
+>
+> Defines the type of event this hook should capture.
+
+This parameter is passed in the config object along with `detectKeys`.
+
+There are 3 type of events options [`keydown`, `keyup`, `keypress`].
 
 ## Contributing
 
