@@ -12,7 +12,6 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
   invariant(window != null, 'window needs to be defined');
   invariant(window.document != null, 'window.document needs to be defined');
   invariant(Array.isArray(dependencies), 'dependencies need to be an array');
-  invariant(Array.isArray(dependencies), 'dependencies need to be an array');
 
   let allowedKeys = detectKeys;
 
