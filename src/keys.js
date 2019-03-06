@@ -6,9 +6,9 @@ const isKeyFromGivenList = (keyCode, allowedKeys = []) => {
   }
   return false;
 };
-const onKeyPress = (currentKeyCode, callback, allowedKeys) => {
+const onKeyPress = (currentKeyCode, callback, allowedKeys, event) => {
   if (isKeyFromGivenList(currentKeyCode, allowedKeys)) {
-    callback(currentKeyCode);
+    callback(currentKeyCode, event);
   }
 };
 

@@ -25,7 +25,7 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
 
   const handleEvent = event => {
     const asciiCode = getAsciiCode(event);
-    return onKeyPress(asciiCode, callback, allowedKeys);
+    return onKeyPress(asciiCode, callback, allowedKeys, event);
   };
 
   useEffect(() => {
