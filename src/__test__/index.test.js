@@ -42,7 +42,7 @@ describe('events', () => {
       code: 'ArrowUp'
     });
     fireEvent(container, keyDownEvent);
-    expect(callback).toHaveBeenCalledWith(38);
+    expect(callback).toHaveBeenCalledWith(38, keyDownEvent);
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
@@ -57,7 +57,7 @@ describe('events', () => {
       code: 'ArrowUp'
     });
     fireEvent(container, keyUpEvent);
-    expect(callback).toHaveBeenCalledWith(38);
+    expect(callback).toHaveBeenCalledWith(38, keyUpEvent);
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
@@ -72,7 +72,7 @@ describe('events', () => {
       code: 'ArrowUp'
     });
     fireEvent(container, keyPressEvent);
-    expect(callback).toHaveBeenCalledWith(38);
+    expect(callback).toHaveBeenCalledWith(38, keyPressEvent);
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
@@ -87,7 +87,7 @@ describe('events', () => {
       code: 'ArrowUp'
     });
     fireEvent(container, keyDownEvent);
-    expect(callback).not.toHaveBeenCalledWith(38);
+    expect(callback).not.toHaveBeenCalledWith(38, keyDownEvent);
     expect(callback).toHaveBeenCalledTimes(0);
   });
 });
