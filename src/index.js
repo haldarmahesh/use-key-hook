@@ -9,8 +9,6 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
 
   invariant(isKeyeventValid, 'keyevent is not valid: ' + keyevent);
   invariant(callback != null, 'callback needs to be defined');
-  invariant(window != null, 'window needs to be defined');
-  invariant(window.document != null, 'window.document needs to be defined');
   invariant(Array.isArray(dependencies), 'dependencies need to be an array');
 
   let allowedKeys = detectKeys;
@@ -29,6 +27,11 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
   };
 
   useEffect(() => {
+    const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+    if (!canUseDOM) {
+      console.error('Window is not defined');
+      return null;
+    }
     window.document.addEventListener(keyevent, handleEvent);
     return () => {
       window.document.removeEventListener(keyevent, handleEvent);

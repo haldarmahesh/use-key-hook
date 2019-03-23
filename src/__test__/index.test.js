@@ -1,7 +1,7 @@
 import React from 'react';
 
 // eslint-disable-next-line object-curly-newline
-import { render, flushEffects, cleanup, fireEvent } from 'react-testing-library';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 
 const useKey = require('../');
 
@@ -34,7 +34,6 @@ describe('events', () => {
   test('it calls the callback with the correct value when the keydown event is fired with the right key', async () => {
     const callback = jest.fn();
     const { container } = render(<TestComponent callback={callback} detectKeys={[38]} />);
-    flushEffects();
     const keyDownEvent = new KeyboardEvent('keydown', {
       key: 'ArrowUp',
       bubbles: true,
@@ -49,7 +48,6 @@ describe('events', () => {
   test('it calls the callback with the correct value when the keyup event is fired with the right key', async () => {
     const callback = jest.fn();
     const { container } = render(<TestComponent callback={callback} keyevent="keyup" detectKeys={[38]} />);
-    flushEffects();
     const keyUpEvent = new KeyboardEvent('keyup', {
       key: 'ArrowUp',
       bubbles: true,
@@ -64,7 +62,6 @@ describe('events', () => {
   test('it calls the callback with the correct value when the keyup event is fired with the right key', async () => {
     const callback = jest.fn();
     const { container } = render(<TestComponent callback={callback} keyevent="keypress" detectKeys={[38]} />);
-    flushEffects();
     const keyPressEvent = new KeyboardEvent('keypress', {
       key: 'ArrowUp',
       bubbles: true,
@@ -79,7 +76,6 @@ describe('events', () => {
   test('it does not call the callback when the key is not in detectKeys', async () => {
     const callback = jest.fn();
     const { container } = render(<TestComponent callback={callback} detectKeys={[12]} />);
-    flushEffects();
     const keyDownEvent = new KeyboardEvent('keydown', {
       key: 'ArrowUp',
       bubbles: true,
