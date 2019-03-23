@@ -36,8 +36,9 @@ The following defination will only detect and execute provided callback **only**
 import useKey from 'use-key-hook';
 
 function MyComponent  = (props) => {
-  useKey((pressedKey) => {
+  useKey((pressedKey, event) => {
     console.log('Detected Key press', pressedKey);
+    console.log('Get event, if you want more details and preventDefault', event)
   }, {
     detectKeys: ['A', '+', 122]
   });
