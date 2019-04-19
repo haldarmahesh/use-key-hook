@@ -30,7 +30,7 @@ yarn add use-key-hook
 
 ## Usage
 
-The following defination will only detect and execute provided callback **only** when `A`, `+` or `z` is pressed from keyboard.
+The following definition will only detect and execute provided callback **only** when `A`, `+` or `z` is pressed from keyboard.
 
 ```javascript
 import useKey from 'use-key-hook';
