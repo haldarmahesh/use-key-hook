@@ -4,7 +4,7 @@ const { onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('./keys.j
 
 const VALID_KEY_EVENTS = ['keydown', 'keyup', 'keypress'];
 
-const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { dependencies = [] } = {}) => {
+const useKey = (callback: unknown, { detectKeys = [], keyevent = 'keydown' } = {}, { dependencies = [] } = {}) => {
   const isKeyeventValid = VALID_KEY_EVENTS.indexOf(keyevent) > -1;
 
   invariant(isKeyeventValid, 'keyevent is not valid: ' + keyevent);
@@ -21,7 +21,7 @@ const useKey = (callback, { detectKeys = [], keyevent = 'keydown' } = {}, { depe
 
   allowedKeys = convertToAsciiEquivalent(allowedKeys);
 
-  const handleEvent = event => {
+  const handleEvent = (event: any) => {
     const asciiCode = getAsciiCode(event);
     return onKeyPress(asciiCode, callback, allowedKeys, event);
   };

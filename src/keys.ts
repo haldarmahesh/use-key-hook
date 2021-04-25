@@ -1,12 +1,12 @@
 const codeLowerCaseA = 65;
 const codeUpperCaseZ = 122;
-const isKeyFromGivenList = (keyCode, allowedKeys = []) => {
+const isKeyFromGivenList = (keyCode: never, allowedKeys = []) => {
   if (allowedKeys === null || allowedKeys.includes(keyCode) || allowedKeys.length === 0) {
     return true;
   }
   return false;
 };
-const onKeyPress = (currentKeyCode, callback, allowedKeys, event) => {
+const onKeyPress = (currentKeyCode: never, callback: Function, allowedKeys: any, event: any) => {
   if (isKeyFromGivenList(currentKeyCode, allowedKeys)) {
     callback(currentKeyCode, event);
   }

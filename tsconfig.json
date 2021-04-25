@@ -1,0 +1,16 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "strict": true,
+      "removeComments": false,
+      "declaration": true,
+      "outDir": "build",
+      "lib": ["es6"]
+    },
+    "include": ["src", "src/index.ts"],
+    "exclude": ["node_modules", "**/__tests__/*"]
+  }
+  
