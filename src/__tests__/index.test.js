@@ -3,9 +3,8 @@ import React from 'react';
 // eslint-disable-next-line object-curly-newline
 import { render, cleanup, fireEvent } from 'react-testing-library';
 
-const useKey = require('../');
+import { useKey } from '../../build/index';
 
-// eslint-disable-next-line react/prop-types
 const TestComponent = ({ callback, detectKeys, keyevent }) => {
   useKey(callback, { detectKeys, keyevent });
   return <div />;
@@ -38,7 +37,7 @@ describe('events', () => {
       key: 'ArrowUp',
       bubbles: true,
       which: 38,
-      code: 'ArrowUp'
+      code: 'ArrowUp',
     });
     fireEvent(container, keyDownEvent);
     expect(callback).toHaveBeenCalledWith(38, keyDownEvent);
@@ -52,7 +51,7 @@ describe('events', () => {
       key: 'ArrowUp',
       bubbles: true,
       which: 38,
-      code: 'ArrowUp'
+      code: 'ArrowUp',
     });
     fireEvent(container, keyUpEvent);
     expect(callback).toHaveBeenCalledWith(38, keyUpEvent);
@@ -66,7 +65,7 @@ describe('events', () => {
       key: 'ArrowUp',
       bubbles: true,
       which: 38,
-      code: 'ArrowUp'
+      code: 'ArrowUp',
     });
     fireEvent(container, keyPressEvent);
     expect(callback).toHaveBeenCalledWith(38, keyPressEvent);
@@ -80,7 +79,7 @@ describe('events', () => {
       key: 'ArrowUp',
       bubbles: true,
       which: 38,
-      code: 'ArrowUp'
+      code: 'ArrowUp',
     });
     fireEvent(container, keyDownEvent);
     expect(callback).not.toHaveBeenCalledWith(38, keyDownEvent);

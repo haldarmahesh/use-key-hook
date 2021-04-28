@@ -8,7 +8,7 @@
       "removeComments": false,
       "declaration": true,
       "outDir": "build",
-      "lib": ["es6"]
+      "lib": ["es6", "DOM"]
     },
     "include": ["src", "src/index.ts"],
     "exclude": ["node_modules", "**/__tests__/*"]

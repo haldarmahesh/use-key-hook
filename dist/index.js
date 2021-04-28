@@ -42,7 +42,7 @@ var useKey = function useKey(callback) {
     return onKeyPress(asciiCode, callback, allowedKeys, event);
   };
 
-  useEffect(function() {
+  useEffect(function () {
     var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
     if (!canUseDOM) {
@@ -51,7 +51,7 @@ var useKey = function useKey(callback) {
     }
 
     window.document.addEventListener(keyevent, handleEvent);
-    return function() {
+    return function () {
       window.document.removeEventListener(keyevent, handleEvent);
     };
   }, dependencies);

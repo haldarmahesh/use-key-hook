@@ -18,37 +18,41 @@
   },
   "scripts": {
     "build:lib": "cross-env NODE_ENV='production' babel src --out-dir dist --ignore '**/__test__/**'",
-    "test": "jest --coverage",
+    "test": "npm run build && jest --coverage",
     "test-watch": "jest --watchAll --coverage",
     "lint": "./node_modules/eslint/bin/eslint.js --ext js,jsx src",
     "lint-fix": "./node_modules/eslint/bin/eslint.js --ext js,jsx src --fix",
     "format:check": "prettier --config ./.prettierrc --list-different \"src/**/*{.ts,.js,.json,.css,.scss}\"",
-    "format:fix": "pretty-quick --staged"
+    "format:fix": "pretty-quick --staged",
+    "build": "tsc"
   },
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.7.0-alpha.2"
   },
   "devDependencies": {
+    "@types/invariant": "^2.2.34",
+    "@types/jest": "^26.0.19",
+    "@types/react": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.8.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-compat": "^2.6.2",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "husky": "1.1.2",
     "jest": "^26.6.3",
-    "prettier": "1.14.3",
+    "prettier": "^2.2.1",
     "pretty-quick": "^1.8.0",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
-    "react-test-renderer": "^16.7.0-alpha.2",
+    "react-test-renderer": "^16.14.0",
     "react-testing-library": "5.9.0",
     "regenerator-runtime": "^0.12.1",
     "typescript": "^4.1.3",
-    "@types/jest": "^26.0.19"
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-jest": "^26.6.3"
   },
   "files": [
     "dist/index.js",

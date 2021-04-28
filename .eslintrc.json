@@ -1,34 +1,14 @@
 {
-  "extends": "airbnb",
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
   "parserOptions": {
-    "sourceType": "module",
-    "parser": "babel-eslint"
+    "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module" // Allows for the use of imports
   },
+  "extends": [
+    "plugin:@typescript-eslint/recommended" // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+  ],
   "rules": {
-    "arrow-parens": ["off"],
-    "prefer-template": "off",
-    "no-console": "off",
-    "compat/compat": 2,
-    "consistent-return": "off",
-    "comma-dangle": "off",
-    "generator-star-spacing": "off",
-    "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": "off",
-    "no-use-before-define": "off",
-    "promise/param-names": 2,
-    "promise/always-return": 2,
-    "promise/catch-or-return": 2,
-    "promise/no-native": 0,
-    "react/jsx-no-bind": "off",
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": "off",
-    "rules": {
-      "curly": ["error", "all"]
-    }
-  },
-  "plugins": ["promise", "compat", "react"],
-  "env": {
-    "jest": true,
-    "browser": true
+    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    // e.g. "@typescript-eslint/explicit-function-return-type": "off",
   }
 }

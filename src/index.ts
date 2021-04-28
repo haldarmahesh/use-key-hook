@@ -1,10 +1,18 @@
-const { useEffect } = require('react');
-const invariant = require('invariant');
-const { onKeyPress, convertToAsciiEquivalent, getAsciiCode } = require('./keys.js');
+import { EffectCallback, useEffect } from 'react';
+
+import invariant from 'invariant';
+import { onKeyPress, convertToAsciiEquivalent, getAsciiCode } from './keys.js';
 
 const VALID_KEY_EVENTS = ['keydown', 'keyup', 'keypress'];
-
-const useKey = (callback: unknown, { detectKeys = [], keyevent = 'keydown' } = {}, { dependencies = [] } = {}) => {
+interface IParamType {
+  detectKeys: Array<string | number>;
+  keyevent: string;
+}
+const useKey = (
+  callback: (currentKeyCode: number, event: Event) => unknown,
+  { detectKeys, keyevent }: IParamType = { detectKeys: [], keyevent: 'keydown' },
+  { dependencies = [] } = {}
+): any => {
   const isKeyeventValid = VALID_KEY_EVENTS.indexOf(keyevent) > -1;
 
   invariant(isKeyeventValid, 'keyevent is not valid: ' + keyevent);
@@ -21,16 +29,18 @@ const useKey = (callback: unknown, { detectKeys = [], keyevent = 'keydown' } = {
 
   allowedKeys = convertToAsciiEquivalent(allowedKeys);
 
-  const handleEvent = (event: any) => {
+  const handleEvent = (event: Event) => {
     const asciiCode = getAsciiCode(event);
     return onKeyPress(asciiCode, callback, allowedKeys, event);
   };
 
-  useEffect(() => {
+  useEffect((): ReturnType<EffectCallback> => {
     const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
     if (!canUseDOM) {
       console.error('Window is not defined');
-      return null;
+      return (): void => {
+        // returning null
+      };
     }
     window.document.addEventListener(keyevent, handleEvent);
     return () => {
@@ -39,4 +49,4 @@ const useKey = (callback: unknown, { detectKeys = [], keyevent = 'keydown' } = {
   }, dependencies);
 };
 
-module.exports = useKey;
+export { useKey };
